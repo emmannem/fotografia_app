@@ -1,0 +1,53 @@
+.blog-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.blog-container h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.blogs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.blog-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
+}
+
+.blog-card h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #ffcc00; /* Color dorado */
+}
+
+.blog-card p {
+  font-size: 1em;
+  color: #555;
+  line-height: 1.6;
+}
+
+.blog-card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.blog-card a:hover {
+  text-decoration: underline;
+}
+
+.blog-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
