@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ContactForm = () => {
+const ContactForm = ({ onSubmit }: { onSubmit: (formData: any) => void }) => {
   const [formData, setFormData] = useState({
     nombre: "",
     apellidos: "",
@@ -11,38 +11,48 @@ const ContactForm = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData); // Aquí puedes enviar el formulario a una API
+    onSubmit(formData);
+    setFormData({ nombre: "", apellidos: "", correo: "", mensaje: "" });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="contact-form">
       <input
         type="text"
         name="nombre"
         placeholder="Nombre completo"
+        value={formData.nombre}
         onChange={handleChange}
+        required
       />
       <input
         type="text"
         name="apellidos"
         placeholder="Apellidos"
+        value={formData.apellidos}
         onChange={handleChange}
+        required
       />
       <input
         type="email"
         name="correo"
-        placeholder="Correo"
+        placeholder="Correo electrónico"
+        value={formData.correo}
         onChange={handleChange}
+        required
       />
       <textarea
         name="mensaje"
         placeholder="Escribe tu mensaje"
+        value={formData.mensaje}
         onChange={handleChange}
+        required
       />
       <button type="submit">Enviar</button>
     </form>

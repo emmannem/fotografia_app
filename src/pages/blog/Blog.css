@@ -1,53 +1,177 @@
-.blog-container {
-  padding: 20px;
-  max-width: 1000px;
-  margin: auto;
-  text-align: center;
-}
+/* Blog.css */
 
-.blog-container h1 {
-  margin-bottom: 20px;
+/* Contenedor General */
+.blogContainer {
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: "Lato", sans-serif;
   color: #333;
-}
-
-.blogs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+/* Encabezado Principal */
+.blogHeader {
+  background: linear-gradient(to bottom, #333, #444);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  width: 90%;
+}
+
+.blogHeader h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+.blogHeader p {
+  font-size: 1.2em;
+}
+
+/* Publicaciones */
+.postsSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
+  margin-bottom: 40px;
 }
 
-.blog-card {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  transition: box-shadow 0.3s;
-}
-
-.blog-card h2 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  color: #ffcc00; /* Color dorado */
-}
-
-.blog-card p {
-  font-size: 1em;
-  color: #555;
-  line-height: 1.6;
-}
-
-.blog-card a {
-  display: inline-block;
-  margin-top: 10px;
-  color: #ffcc00;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.blog-card a:hover {
-  text-decoration: underline;
-}
-
-.blog-card:hover {
+.postCard {
+  background-color: #f5f5f5;
+  border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  padding-bottom: 15px;
+}
+
+.postCard:hover {
+  transform: translateY(-5px);
+}
+
+.postCard img {
+  width: 100%; /* Ajustado para ocupar todo el ancho */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-bottom: 5px solid #ffcc00; /* Añade un borde en la parte inferior */
+}
+
+.postCard h3 {
+  padding: 15px;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.postCard p {
+  padding: 0 15px 15px;
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Consejo del Día */
+.tipOfTheDay {
+  background-color: #e7f3fe; /* Fondo azul claro */
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 40px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Añadido sombra para destacar */
+}
+
+.tipOfTheDay h3 {
+  font-size: 1.8em;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.tipOfTheDay p {
+  color: #333;
+  font-size: 1.1em;
+}
+
+/* Sección de Comentarios */
+.commentsSection {
+  margin-top: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.commentsSection h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.comment {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #f9f9f9; /* Añadido fondo suave para destacar */
+}
+
+.comment h4 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.comment p {
+  margin: 5px 0;
+  color: #666;
+}
+
+/* Formulario de Comentarios */
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.commentForm input[type="text"],
+.commentForm input[type="email"],
+.commentForm textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  font-size: 1rem;
+}
+
+.commentForm button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.commentForm button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .postsSection {
+    grid-template-columns: 1fr;
+  }
+
+  .blogHeader h1 {
+    font-size: 2.5em;
+  }
+
+  .postCard img {
+    width: 100%;
+  }
+
+  .commentsSection h2 {
+    font-size: 1.8em;
+  }
 }

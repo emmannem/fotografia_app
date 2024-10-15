@@ -1,11 +1,19 @@
 import "./Footer.css";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+} from "react-icons/fa"; // Asegúrate de instalar react-icons
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <h2>Fotografía Web</h2>
-        <p>Capturando momentos, creando recuerdos.</p>
+        <div className="footer-logo">
+          <h2>Fotografía Web</h2>
+          <p>Capturando momentos, creando recuerdos.</p>
+        </div>
 
         <div className="footer-links">
           <h3>Enlaces útiles</h3>
@@ -34,6 +42,24 @@ const Footer = () => {
           <p>
             Teléfono: <a href="tel:+123456789">+1 234 567 89</a>
           </p>
+        </div>
+
+        <div className="footer-social">
+          <h3>Redes Sociales</h3>
+          <div className="social-icons">
+            <a href="#">
+              <FaFacebookF />
+            </a>
+            <a href="#">
+              <FaTwitter />
+            </a>
+            <a href="#">
+              <FaInstagram />
+            </a>
+            <a href="#">
+              <FaLinkedin />
+            </a>
+          </div>
         </div>
       </div>
       <div className="footer-bottom">
