@@ -4,22 +4,8 @@ import Map from "../../components/Map"; // Usamos el componente de mapa personal
 import "./Contact.css"; // Mantenemos el archivo CSS
 
 const Contact = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleFormSubmit = (formData: any) => {
-    const { nombre, apellidos, correo, mensaje } = formData;
-
-    if (!nombre || !apellidos || !correo || !mensaje) {
-      setError("Por favor, completa todos los campos.");
-      return;
-    }
-
-    // Simular el envío a una API.
-    console.log("Formulario enviado:", formData);
-    setSubmitted(true);
-    setError("");
-  };
+  const [submitted] = useState(false);
+  const [error] = useState("");
 
   return (
     <div className="contact-page">
@@ -42,7 +28,7 @@ const Contact = () => {
         ) : (
           <>
             {error && <p className="error">{error}</p>}
-            <ContactForm onSubmit={handleFormSubmit} />
+            <ContactForm />
           </>
         )}
       </section>
@@ -50,6 +36,10 @@ const Contact = () => {
       {/* Sección del Mapa */}
       <section className="map-section">
         <h2>Nuestra Ubicación</h2>
+        <p>
+          ¡Te esperamos en nuestros cursos presenciales! Visítanos y aprende en
+          un entorno colaborativo con instructores expertos.
+        </p>
         <Map />
       </section>
     </div>

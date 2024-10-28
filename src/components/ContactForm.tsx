@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { handleContactSubmit } from "../controllers/ContactCotroller";
+import { ContactData } from "../models/ContactModel";
 
-const ContactForm = ({ onSubmit }: { onSubmit: (formData: any) => void }) => {
-  const [formData, setFormData] = useState({
-    nombre: "",
-    apellidos: "",
-    correo: "",
-    mensaje: "",
+const ContactForm = () => {
+  const [formData, setFormData] = useState<ContactData>({
+    first_name: "",
+    last_name: "",
+    email: "",
+    message: "",
   });
+
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -15,47 +19,64 @@ const ContactForm = ({ onSubmit }: { onSubmit: (formData: any) => void }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
-    setFormData({ nombre: "", apellidos: "", correo: "", mensaje: "" });
+    try {
+      await handleContactSubmit(formData);
+      setFormData({
+        first_name: "",
+        last_name: "",
+        email: "",
+        message: "",
+      });
+      setSubmitted(true); // Activa la notificación de éxito
+    } catch (error) {
+      console.error("Error al enviar el mensaje:", error);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="contact-form">
-      <input
-        type="text"
-        name="nombre"
-        placeholder="Nombre completo"
-        value={formData.nombre}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="apellidos"
-        placeholder="Apellidos"
-        value={formData.apellidos}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="email"
-        name="correo"
-        placeholder="Correo electrónico"
-        value={formData.correo}
-        onChange={handleChange}
-        required
-      />
-      <textarea
-        name="mensaje"
-        placeholder="Escribe tu mensaje"
-        value={formData.mensaje}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Enviar</button>
-    </form>
+    <div>
+      {submitted && (
+        <p className="success-message">
+          ¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.
+        </p>
+      )}
+      <form onSubmit={handleSubmit} className="contact-form">
+        <input
+          type="text"
+          name="first_name"
+          placeholder="Nombre completo"
+          value={formData.first_name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="last_name"
+          placeholder="Apellidos"
+          value={formData.last_name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Correo electrónico"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Escribe tu mensaje"
+          value={formData.message}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
   );
 };
 
